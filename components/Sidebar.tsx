@@ -3,16 +3,17 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { Home, ScrollText, PieChart, Smartphone, Newspaper, Sparkles, Ticket, UserRound } from 'lucide-react';
 
 const NAV = [
-  { href: '/home', label: 'Home', short: 'H' },
-  { href: '/transactions', label: 'Transactions', short: 'T' },
-  { href: '/portfolio', label: 'Portfolio', short: 'P' },
-  { href: '/upi', label: 'UPI', short: 'U' },
-  { href: '/news', label: 'News', short: 'N' },
-  { href: '/insights', label: 'Insights', short: 'I' },
-  { href: '/rewards', label: 'Rewards', short: 'R' },
-  { href: '/profile', label: 'Profile', short: 'Pr' },
+  { href: '/home', label: 'Home', icon: Home },
+  { href: '/transactions', label: 'Transactions', icon: ScrollText },
+  { href: '/portfolio', label: 'Portfolio', icon: PieChart },
+  { href: '/upi', label: 'UPI', icon: Smartphone },
+  { href: '/news', label: 'News', icon: Newspaper },
+  { href: '/insights', label: 'Insights', icon: Sparkles },
+  { href: '/rewards', label: 'Rewards', icon: Ticket },
+  { href: '/profile', label: 'Profile', icon: UserRound },
 ];
 
 export default function Sidebar() {
@@ -77,26 +78,36 @@ export default function Sidebar() {
 
       {/* Mobile Bottom Nav */}
       <nav
-        className="md:hidden fixed bottom-0 left-0 right-0 z-40 flex overflow-x-auto"
+        className="md:hidden fixed bottom-3 left-3 right-3 z-40 mx-auto flex max-w-[calc(100%-1.5rem)] overflow-x-auto overscroll-x-contain snap-x snap-mandatory scrollbar-hide rounded-full border px-2 py-2 shadow-[0_18px_45px_rgba(0,0,0,0.12)]"
         style={{
           backgroundColor: 'var(--card)',
-          borderTop: 'var(--nb-border-width) solid var(--nb-border-color)',
+          border: 'var(--nb-border-width) solid var(--nb-border-color)',
+          backdropFilter: 'blur(16px)',
         }}
       >
         {NAV.map((item) => {
           const active = isActive(item.href);
+          const Icon = item.icon;
           return (
             <Link
               key={item.href}
               href={item.href}
-              className="flex-1 flex items-center justify-center py-2 text-center transition-colors min-w-max sm:min-w-fit"
+              className="flex-none w-1/4 min-w-[25%] snap-start px-1.5"
               style={{
                 color: active ? '#1A1A1A' : 'var(--text-muted)',
-                backgroundColor: active ? 'var(--accent)' : 'transparent',
               }}
               title={item.label}
             >
-              <span className="text-xs sm:text-sm font-bold leading-tight">{item.label}</span>
+              <span
+                className="flex h-12 flex-col items-center justify-center gap-1 rounded-full border text-center transition-colors"
+                style={{
+                  backgroundColor: active ? 'var(--accent)' : 'transparent',
+                  borderColor: active ? 'var(--nb-border-color)' : 'transparent',
+                  boxShadow: active ? 'var(--nb-shadow-sm)' : 'none',
+                }}
+              >
+                <Icon className="h-4 w-4" strokeWidth={2.5} />
+              </span>
             </Link>
           );
         })}
