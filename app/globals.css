@@ -204,10 +204,7 @@
   mask-image: radial-gradient(circle at center, black 52%, transparent 90%);
 }
 
-.app-shell > * {
-  position: relative;
-  z-index: 1;
-}
+
 
 /* ─── NEOBRUTALISM COMPONENTS ─── */
 @layer utilities {

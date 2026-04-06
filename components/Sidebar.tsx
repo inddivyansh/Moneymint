@@ -53,7 +53,7 @@ export default function Sidebar() {
         </div>
 
         {/* Nav Items */}
-        <nav className="py-2 px-2 space-y-0.5 overflow-y-auto">
+        <nav className="flex-1 py-2 px-2 space-y-0.5 overflow-y-auto">
           {NAV.map((item) => {
             const active = isActive(item.href);
             return (
@@ -78,7 +78,7 @@ export default function Sidebar() {
         </nav>
 
         {/* Bottom */}
-        <div className="mt-3 p-3 text-center" style={{ borderTop: '1px solid var(--surface-3)' }}>
+        <div className="mt-auto p-3 text-center" style={{ borderTop: '1px solid var(--surface-3)' }}>
           <p className="text-[10px] font-bold" style={{ color: 'var(--text-muted)' }}>
             Moneymint
           </p>
