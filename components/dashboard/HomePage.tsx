@@ -18,7 +18,7 @@ export default function HomePage() {
   }, { invested: 0, current: 0 });
 
   return (
-    <div className="space-y-6 sm:space-y-8 nb-animate-in">
+    <div className="space-y-4 sm:space-y-5 nb-animate-in">
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 sm:gap-4">
         <div className="min-w-0">
@@ -33,12 +33,12 @@ export default function HomePage() {
       </div>
 
       {/* Summary Cards - 2 on mobile, 3 on tablet+ */}
-      <div className="grid gap-3 sm:gap-4 grid-cols-2 sm:grid-cols-3">
-        <div className="nb-card p-4 sm:p-5 accent-strip-left">
+      <div className="grid gap-2.5 sm:gap-3 grid-cols-2 sm:grid-cols-3">
+        <div className="nb-card p-3 sm:p-3.5 accent-strip-left">
           <p className="text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-2" style={{ color: 'var(--text-muted)' }}>
             Account Balance
           </p>
-          <p className="text-lg sm:text-2xl md:text-3xl font-extrabold truncate" style={{ fontFamily: 'var(--font-display)' }}>
+          <p className="text-base sm:text-xl md:text-2xl font-extrabold truncate" style={{ fontFamily: 'var(--font-display)' }}>
             {currency.format(totalBankBalance)}
           </p>
           <p className="text-[10px] sm:text-xs mt-1 sm:mt-2" style={{ color: 'var(--text-muted)' }}>
@@ -46,11 +46,11 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="nb-card p-4 sm:p-5 accent-strip-expense">
+        <div className="nb-card p-3 sm:p-3.5 accent-strip-expense">
           <p className="text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-2" style={{ color: 'var(--text-muted)' }}>
             Spent Today
           </p>
-          <p className="text-lg sm:text-2xl md:text-3xl font-extrabold truncate" style={{ fontFamily: 'var(--font-display)' }}>
+          <p className="text-base sm:text-xl md:text-2xl font-extrabold truncate" style={{ fontFamily: 'var(--font-display)' }}>
             {currency.format(totals.spentToday)}
           </p>
           <p className="text-[10px] sm:text-xs mt-1 sm:mt-2" style={{ color: 'var(--text-muted)' }}>
@@ -58,11 +58,11 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="nb-card p-4 sm:p-5 accent-strip-income">
+        <div className="nb-card p-3 sm:p-3.5 accent-strip-income">
           <p className="text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-2" style={{ color: 'var(--text-muted)' }}>
             Savings Rate
           </p>
-          <p className="text-lg sm:text-2xl md:text-3xl font-extrabold truncate" style={{ fontFamily: 'var(--font-display)' }}>
+          <p className="text-base sm:text-xl md:text-2xl font-extrabold truncate" style={{ fontFamily: 'var(--font-display)' }}>
             {totals.savingsRate.toFixed(1)}%
           </p>
           <p className="text-[10px] sm:text-xs mt-1 sm:mt-2" style={{ color: 'var(--text-muted)' }}>
@@ -72,14 +72,14 @@ export default function HomePage() {
       </div>
 
       {/* Pie Chart + Recent Activity */}
-      <div className="grid gap-5 sm:gap-6 lg:grid-cols-2">
+      <div className="grid gap-4 lg:grid-cols-2">
         {/* Donut Chart */}
-        <div className="nb-card p-4 sm:p-6">
+        <div className="nb-card p-3.5 sm:p-4">
           <h2 className="text-sm sm:text-base font-bold mb-1">This Month's Spending</h2>
           <p className="text-xs mb-4 sm:mb-5" style={{ color: 'var(--text-muted)' }}>Category breakdown for {new Date().toLocaleString('en-US', { month: 'long', year: 'numeric' })}</p>
 
           {currentMonthSpending.length === 0 ? (
-            <div className="nb-card-flat p-6 sm:p-8 text-center" style={{ color: 'var(--text-muted)' }}>
+            <div className="nb-card-flat p-4 sm:p-5 text-center" style={{ color: 'var(--text-muted)' }}>
               No expenses this month yet.
             </div>
           ) : (
@@ -160,12 +160,12 @@ export default function HomePage() {
         </div>
 
         {/* P&L Summary */}
-        <div className="nb-card p-4 sm:p-6">
+        <div className="nb-card p-3.5 sm:p-4">
           <h2 className="text-sm sm:text-base font-bold mb-1">Portfolio P&L</h2>
           <p className="text-xs mb-4 sm:mb-5" style={{ color: 'var(--text-muted)' }}>Profit & loss across demat accounts</p>
 
           {state.dematAccounts.length === 0 ? (
-            <div className="nb-card-flat p-6 sm:p-8 text-center" style={{ color: 'var(--text-muted)' }}>
+            <div className="nb-card-flat p-4 sm:p-5 text-center" style={{ color: 'var(--text-muted)' }}>
               <p className="text-xs sm:text-sm">No demat accounts linked.</p>
             </div>
           ) : (

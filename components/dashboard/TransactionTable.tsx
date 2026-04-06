@@ -28,7 +28,7 @@ export default function TransactionTable() {
   }
 
   return (
-    <article className="nb-card p-5">
+    <article className="nb-card p-4 sm:p-5">
       <header className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-5">
         <div>
           <h2 className="text-lg font-bold">Transactions</h2>
@@ -36,7 +36,7 @@ export default function TransactionTable() {
             Search, sort, and filter your activity
           </p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 flex-wrap">
           <span className="nb-badge nb-badge-neutral">
             {filteredTransactions.length} RECORDS
           </span>
@@ -74,13 +74,13 @@ export default function TransactionTable() {
         </div>
 
         {/* Type filter - segmented */}
-        <div className="nb-segment self-start">
+        <div className="nb-segment self-start w-full sm:w-auto">
           {(['all', 'income', 'expense'] as const).map((t) => (
             <button
               key={t}
               type="button"
               onClick={() => setFilterAndResetPage({ type: t })}
-              className={`nb-segment-btn ${typeFilter === t ? 'nb-segment-btn-active' : ''}`}
+              className={`nb-segment-btn flex-1 ${typeFilter === t ? 'nb-segment-btn-active' : ''}`}
             >
               {t === 'all' ? 'All' : t}
             </button>
@@ -192,10 +192,10 @@ export default function TransactionTable() {
           {/* Mobile Cards */}
           <div className="grid gap-3 md:hidden">
             {paged.map((tx) => (
-              <article key={tx.id} className="nb-card-flat p-4">
+              <article key={tx.id} className="nb-card-flat p-3.5 sm:p-4">
                 <div className="flex items-start justify-between gap-3 mb-2">
-                  <div>
-                    <p className="font-bold text-sm" style={{ color: 'var(--text-primary)' }}>{tx.title}</p>
+                  <div className="min-w-0">
+                    <p className="font-bold text-sm break-words" style={{ color: 'var(--text-primary)' }}>{tx.title}</p>
                     <p className="text-xs mt-0.5" style={{ color: 'var(--text-muted)' }}>
                       {new Date(tx.date).toLocaleDateString('en-IN')}
                       {' / '}
@@ -229,11 +229,11 @@ export default function TransactionTable() {
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="flex items-center justify-between mt-5">
-              <p className="text-xs font-bold" style={{ color: 'var(--text-muted)' }}>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mt-5">
+              <p className="text-xs font-bold text-center sm:text-left" style={{ color: 'var(--text-muted)' }}>
                 Page {page + 1} of {totalPages}
               </p>
-              <div className="flex gap-2">
+              <div className="flex items-center justify-center sm:justify-end gap-1.5 sm:gap-2 flex-wrap">
                 <button
                   type="button"
                   onClick={() => setPage((p) => Math.max(0, p - 1))}
@@ -242,6 +242,26 @@ export default function TransactionTable() {
                 >
                   Prev
                 </button>
+
+                {/* Compact mobile pagination */}
+                <div className="sm:hidden flex items-center gap-1.5">
+                  <span className="text-[11px] font-bold" style={{ color: 'var(--text-muted)' }}>Go to</span>
+                  <select
+                    value={page}
+                    onChange={(e) => setPage(Number(e.target.value))}
+                    className="nb-select"
+                    style={{ width: 96, padding: '0.3rem 1.8rem 0.3rem 0.5rem', fontSize: '0.75rem' }}
+                  >
+                    {Array.from({ length: totalPages }, (_, i) => (
+                      <option key={i} value={i}>
+                        {i + 1}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Numbered desktop/tablet pagination */}
+                <div className="hidden sm:flex gap-2">
                 {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => {
                   let pageNum: number;
                   if (totalPages <= 5) {
@@ -265,6 +285,7 @@ export default function TransactionTable() {
                     </button>
                   );
                 })}
+                </div>
                 <button
                   type="button"
                   onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}

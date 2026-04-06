@@ -13,13 +13,13 @@ function DashboardContent() {
   const { state, dispatch } = useDashboard();
 
   return (
-    <div className="space-y-6 nb-animate-in">
+    <div className="space-y-4 sm:space-y-5 nb-animate-in">
       {/* Hero Section */}
       <section
-        className="nb-card p-6 md:p-8"
+        className="nb-card p-4 md:p-5"
         style={{ borderLeftWidth: 6, borderLeftColor: 'var(--accent)' }}
       >
-        <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+        <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
             <p
               className="text-xs font-extrabold uppercase tracking-[0.25em] mb-2"
@@ -28,12 +28,12 @@ function DashboardContent() {
               Personal Finance Dashboard
             </p>
             <h1
-              className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight"
+              className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight"
               style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}
             >
               Moneymint
             </h1>
-            <p className="text-sm mt-2 max-w-xl" style={{ color: 'var(--text-secondary)' }}>
+            <p className="text-xs sm:text-sm mt-1.5 max-w-xl" style={{ color: 'var(--text-secondary)' }}>
               Track spending, manage transactions, and understand your financial patterns. 
               Switch to Admin to add or edit entries.
             </p>
@@ -61,15 +61,15 @@ function DashboardContent() {
       <SummaryCards />
 
       {/* Charts Row */}
-      <section className="grid gap-6 lg:grid-cols-2">
+      <section className="grid gap-4 lg:grid-cols-2">
         <BalanceTrend />
         <SpendingBreakdown />
       </section>
 
       {/* Transactions + Form */}
-      <section className="grid gap-6 lg:grid-cols-[1.6fr_1fr]">
+      <section className="grid gap-4 lg:grid-cols-[1.6fr_1fr]">
         <TransactionTable />
-        <aside className="space-y-6">
+        <aside className="space-y-4">
           <TransactionForm />
         </aside>
       </section>

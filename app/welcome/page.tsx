@@ -75,7 +75,10 @@ export default function WelcomePage() {
             <span className="wl-logo-text">Moneymint</span>
           </div>
           <div className="wl-nav-actions">
-            <button className="wl-btn-accent" onClick={() => router.push('/home')}>Open Dashboard</button>
+            <button className="wl-btn-accent wl-btn-nav" onClick={() => router.push('/home')}>
+              <span className="sm:hidden">Dashboard</span>
+              <span className="hidden sm:inline">Open Dashboard</span>
+            </button>
           </div>
         </div>
       </header>

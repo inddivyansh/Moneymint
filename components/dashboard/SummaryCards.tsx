@@ -37,25 +37,25 @@ export default function SummaryCards() {
   ];
 
   return (
-    <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+    <section className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
       {cards.map((card) => (
         <article
           key={card.title}
-          className={`nb-card p-5 ${card.accent}`}
+          className={`nb-card p-3.5 sm:p-4 ${card.accent}`}
         >
           <p
-            className="text-xs font-bold uppercase tracking-widest mb-3"
+            className="text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-2"
             style={{ color: 'var(--text-muted)' }}
           >
             {card.title}
           </p>
           <p
-            className="text-3xl font-extrabold tracking-tight mb-1"
+            className="text-xl sm:text-2xl font-extrabold tracking-tight mb-0.5"
             style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}
           >
             {card.value}
           </p>
-          <p className="text-xs mt-2" style={{ color: 'var(--text-muted)' }}>
+          <p className="text-[10px] sm:text-xs mt-1" style={{ color: 'var(--text-muted)' }}>
             {card.hint}
           </p>
         </article>
