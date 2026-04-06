@@ -24,6 +24,14 @@ export default function Sidebar() {
     return pathname.startsWith(href);
   };
 
+  const handleNavClick = () => {
+    if (typeof window !== 'undefined') {
+      window.requestAnimationFrame(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      });
+    }
+  };
+
   return (
     <>
       {/* Desktop Sidebar */}
@@ -45,13 +53,15 @@ export default function Sidebar() {
         </div>
 
         {/* Nav Items */}
-        <nav className="flex-1 py-2 px-2 space-y-0.5 overflow-y-auto">
+        <nav className="py-2 px-2 space-y-0.5 overflow-y-auto">
           {NAV.map((item) => {
             const active = isActive(item.href);
             return (
               <Link
                 key={item.href}
                 href={item.href}
+                scroll={true}
+                onClick={handleNavClick}
                 className="flex items-center px-2.5 py-2 rounded-lg text-sm font-semibold transition-colors"
                 style={{
                   backgroundColor: active ? 'var(--accent)' : 'transparent',
@@ -61,15 +71,14 @@ export default function Sidebar() {
                 }}
                 title={item.label}
               >
-                <span className="hidden lg:inline">{item.label}</span>
-                <span className="lg:hidden">{item.short}</span>
+                <span className="truncate">{item.label}</span>
               </Link>
             );
           })}
         </nav>
 
         {/* Bottom */}
-        <div className="p-3 text-center" style={{ borderTop: '1px solid var(--surface-3)' }}>
+        <div className="mt-3 p-3 text-center" style={{ borderTop: '1px solid var(--surface-3)' }}>
           <p className="text-[10px] font-bold" style={{ color: 'var(--text-muted)' }}>
             Moneymint
           </p>
@@ -92,6 +101,8 @@ export default function Sidebar() {
             <Link
               key={item.href}
               href={item.href}
+              scroll={true}
+              onClick={handleNavClick}
               className="flex-none w-1/4 min-w-[25%] snap-start px-1.5"
               style={{
                 color: active ? '#1A1A1A' : 'var(--text-muted)',

@@ -9,7 +9,7 @@ export default function SpendingBreakdown() {
 
   if (spendingByCategory.length === 0) {
     return (
-      <article className="nb-card p-5">
+      <article className="nb-card premium-panel p-5">
         <h2 className="text-lg font-bold mb-4">Spending Breakdown</h2>
         <div className="nb-card-flat p-8 text-center" style={{ color: 'var(--text-muted)' }}>
           No expense data available.
@@ -21,7 +21,7 @@ export default function SpendingBreakdown() {
   const maxTotal = spendingByCategory[0]?.total ?? 1;
 
   return (
-    <article className="nb-card p-5">
+    <article className="nb-card premium-panel p-5">
       <header className="flex items-center justify-between mb-4">
         <div>
           <h2 className="text-lg font-bold">Spending Breakdown</h2>

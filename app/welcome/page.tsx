@@ -152,7 +152,7 @@ export default function WelcomePage() {
           <div className="wl-trust-marquee">
             {[...integrationFiles, ...integrationFiles].map((file, idx) => (
               <span key={idx} className="wl-trust-logo">
-                <Image src={`/assets/icons/${file}`} alt="Partner" width={80} height={28} className="object-contain" style={{ width: 'auto', height: '28px', maxWidth: '80px', filter: 'grayscale(1)', opacity: 0.7 }} />
+                <Image src={`/assets/icons/${file}`} alt="Partner" width={120} height={40} className="object-contain" style={{ width: 'auto', height: '40px', maxWidth: '120px' }} />
               </span>
             ))}
           </div>
