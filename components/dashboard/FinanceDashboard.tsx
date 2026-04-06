@@ -6,8 +6,6 @@ import BalanceTrend from './BalanceTrend';
 import SpendingBreakdown from './SpendingBreakdown';
 import TransactionTable from './TransactionTable';
 import TransactionForm from './TransactionForm';
-import InsightsPanel from './InsightsPanel';
-import NewsFeed from './NewsFeed';
 import RoleSwitcher from './RoleSwitcher';
 import ExportButton from './ExportButton';
 
@@ -76,11 +74,6 @@ function DashboardContent() {
         </aside>
       </section>
 
-      {/* Insights + News */}
-      <section className="grid gap-6 lg:grid-cols-2">
-        <InsightsPanel />
-        <NewsFeed />
-      </section>
     </div>
   );
 }

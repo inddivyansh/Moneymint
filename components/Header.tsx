@@ -12,7 +12,7 @@ export default function Header() {
     >
       <div className="container flex items-center justify-between py-4 gap-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
+        <Link href="/home" className="flex items-center gap-3 group">
           <span
             className="inline-flex items-center justify-center w-9 h-9 text-sm font-black rounded-md"
             style={{

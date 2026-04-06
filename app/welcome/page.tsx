@@ -4,9 +4,6 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import Image from 'next/image';
 import { Check, Star } from 'lucide-react';
-import Link from 'next/link';
-import ContactUsModal from '@/components/ContactUsModal';
-import ThemeToggle from '@/components/ThemeToggle';
 
 /* ── FAQ Accordion Item ── */
 function FaqItem({ question, answer }: { question: string; answer: string }) {
@@ -67,7 +64,7 @@ export default function WelcomePage() {
       <div className="wl-banner">
         <span className="wl-banner-dot" />
         Moneymint now features AI-powered insights with Gemini 2.5 Pro.&nbsp;
-        <button className="wl-banner-link" onClick={() => router.push('/')}>Try it now →</button>
+        <button className="wl-banner-link" onClick={() => router.push('/home')}>Try it now →</button>
       </div>
 
       {/* ═══════ NAV ═══════ */}
@@ -78,10 +75,7 @@ export default function WelcomePage() {
             <span className="wl-logo-text">Moneymint</span>
           </div>
           <div className="wl-nav-actions">
-            <ThemeToggle />
-            <ContactUsModal />
-            <Link href="/sign-in" className="wl-btn-ghost">Log In</Link>
-            <Link href="/sign-up" className="wl-btn-accent">Sign Up</Link>
+            <button className="wl-btn-accent" onClick={() => router.push('/home')}>Open Dashboard</button>
           </div>
         </div>
       </header>
@@ -118,7 +112,7 @@ export default function WelcomePage() {
           <div className="wl-hero-input-row" style={{ display: 'none' }}>
           </div>
 
-          <button className="wl-btn-welcome" onClick={() => router.push('/')}>
+          <button className="wl-btn-welcome" onClick={() => router.push('/home')}>
             Welcome — Enter Dashboard
           </button>
         </div>
@@ -183,12 +177,12 @@ export default function WelcomePage() {
                 <h3 className="wl-feature-title">{f.title}</h3>
               </div>
               <p className="wl-feature-desc">{f.desc}</p>
-              <button className="wl-feature-link" onClick={() => router.push('/')}>{f.link}</button>
+              <button className="wl-feature-link" onClick={() => router.push('/home')}>{f.link}</button>
             </div>
           ))}
         </div>
         <div className="wl-center-btn">
-          <button className="wl-btn-accent" onClick={() => router.push('/')}>See All Features</button>
+          <button className="wl-btn-accent" onClick={() => router.push('/home')}>See All Features</button>
         </div>
       </section>
 
@@ -252,7 +246,7 @@ export default function WelcomePage() {
           </div>
         </div>
         <div className="wl-center-btn">
-          <button className="wl-feature-link" onClick={() => router.push('/')}>See All Integrations</button>
+            <button className="wl-feature-link" onClick={() => router.push('/home')}>See All Integrations</button>
         </div>
       </section>
 
@@ -291,7 +285,7 @@ export default function WelcomePage() {
           <div className="wl-cta-right">
             <div className="wl-hero-input-row" style={{ display: 'none' }}>
             </div>
-            <button className="wl-btn-welcome wl-btn-welcome-sm" onClick={() => router.push('/')}>
+            <button className="wl-btn-welcome wl-btn-welcome-sm" onClick={() => router.push('/home')}>
               Welcome — Enter Dashboard
             </button>
           </div>
@@ -321,7 +315,7 @@ export default function WelcomePage() {
           </div>
           <div className="wl-footer-col">
             <h4 className="wl-footer-heading">Get Started</h4>
-            <button className="wl-footer-link" onClick={() => router.push('/')}>Enter Dashboard</button>
+            <button className="wl-footer-link" onClick={() => router.push('/home')}>Enter Dashboard</button>
           </div>
         </div>
         <div className="wl-footer-bottom">
