@@ -8,7 +8,7 @@ export default function RoleSwitcher() {
   const roles: UserRole[] = ['viewer', 'admin'];
 
   return (
-    <div className="nb-segment">
+    <div className="nb-segment self-start sm:self-auto">
       {roles.map((role) => (
         <button
           key={role}
