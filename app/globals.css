@@ -180,12 +180,13 @@
     border-bottom: 1px solid var(--surface-3);
     border-radius: 0;
     box-shadow: none;
-    transition: border-color 0.15s ease;
+    transition: border-color 0.18s ease, transform 0.18s ease, background-color 0.18s ease;
+    will-change: transform;
   }
 
   .nb-card:hover {
     border-bottom-color: var(--nb-border-color);
-    
+    transform: translateY(-1px);
   }
 
   .nb-card-flat {
@@ -193,6 +194,13 @@
     color: var(--card-foreground);
     border: 1px solid var(--surface-3);
     border-radius: 6px;
+    transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+    will-change: transform;
+  }
+
+  .nb-card-flat:hover {
+    transform: translateY(-1px);
+    border-color: var(--nb-border-color);
   }
 
   /* ── Buttons ── */
@@ -209,19 +217,19 @@
     border-radius: var(--nb-radius);
     box-shadow: var(--nb-shadow-sm);
     cursor: pointer;
-    transition: box-shadow 0.1s ease, transform 0.1s ease;
+    transition: box-shadow 0.14s ease, transform 0.14s ease, background-color 0.14s ease, border-color 0.14s ease;
     background-color: var(--card);
     color: var(--foreground);
   }
 
   .nb-btn:hover {
     box-shadow: var(--nb-shadow);
-    
+    transform: translateY(-1px);
   }
 
   .nb-btn:active {
     box-shadow: 0px 0px 0px var(--nb-border-color);
-    
+    transform: translateY(0);
   }
 
   .nb-btn:disabled {
@@ -414,7 +422,7 @@
     color: var(--text-secondary);
     border: none;
     border-right: var(--nb-border-width) solid var(--nb-border-color);
-    transition: background-color 0.1s ease;
+    transition: background-color 0.14s ease, color 0.14s ease, transform 0.14s ease;
   }
 
   .nb-segment-btn:last-child {
@@ -423,6 +431,7 @@
 
   .nb-segment-btn:hover {
     background-color: var(--surface-2);
+    transform: translateY(-1px);
   }
 
   .nb-segment-btn-active {
@@ -479,6 +488,37 @@
   background-color: var(--surface-3);
   border-radius: 4px;
   animation: nb-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes nb-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nb-animate-in {
+  animation: nb-rise 0.45s ease-out both;
+}
+
+.nb-animate-soft {
+  animation: nb-rise 0.55s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* ─── PAGE ENTER ANIMATION ─── */
