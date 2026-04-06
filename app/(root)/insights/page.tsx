@@ -19,10 +19,10 @@ export default function InsightsPage() {
         </h1>
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-2">
+      <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-2">
         {insights.map((insight, index) => (
-          <div key={insight} className="nb-card p-5">
-            <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: 'var(--text-muted)' }}>
+          <div key={insight} className="nb-card p-4 sm:p-5">
+            <p className="text-xs font-bold uppercase tracking-widest mb-2 sm:mb-3" style={{ color: 'var(--text-muted)' }}>
               Insight 0{index + 1}
             </p>
             <p className="text-sm font-semibold leading-relaxed" style={{ color: 'var(--text-primary)' }}>

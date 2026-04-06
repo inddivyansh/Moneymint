@@ -33,10 +33,10 @@ export default function NewsPage() {
         </h1>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {articles.map((article) => (
-          <article key={article.title} className="nb-card p-5 flex flex-col">
-            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: 'var(--text-muted)' }}>
+          <article key={article.title} className="nb-card p-4 sm:p-5 flex flex-col">
+            <p className="text-xs font-bold uppercase tracking-widest mb-2 sm:mb-3" style={{ color: 'var(--text-muted)' }}>
               {article.source}
             </p>
             <h2 className="text-sm font-bold mb-2 leading-snug" style={{ color: 'var(--text-primary)' }}>
@@ -45,7 +45,7 @@ export default function NewsPage() {
             <p className="text-xs leading-relaxed flex-1" style={{ color: 'var(--text-secondary)' }}>
               {article.summary}
             </p>
-            <div className="mt-4 text-xs font-bold" style={{ color: 'var(--text-muted)' }}>
+            <div className="mt-3 sm:mt-4 text-xs font-bold" style={{ color: 'var(--text-muted)' }}>
               {article.date}
             </div>
           </article>

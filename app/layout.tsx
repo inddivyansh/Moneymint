@@ -1,17 +1,17 @@
 import type { Metadata } from 'next';
-import { DM_Sans, Outfit, Geist_Mono } from 'next/font/google';
+import { Geist_Mono, Manrope, Sora } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 import { Toaster } from '@/components/ui/sonner';
 import './globals.css';
 
-const dmSans = DM_Sans({
-  variable: '--font-sans',
+const manrope = Manrope({
+  variable: '--font-manrope',
   subsets: ['latin'],
   display: 'swap',
 });
 
-const outfit = Outfit({
-  variable: '--font-display',
+const sora = Sora({
+  variable: '--font-sora',
   subsets: ['latin'],
   display: 'swap',
 });
@@ -34,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${dmSans.variable} ${outfit.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${manrope.variable} ${sora.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           {children}
           <Toaster />

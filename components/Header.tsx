@@ -10,11 +10,11 @@ export default function Header() {
         borderBottom: 'var(--nb-border-width) solid var(--nb-border-color)',
       }}
     >
-      <div className="container flex items-center justify-between py-4 gap-4">
+      <div className="w-full mx-auto px-3 sm:px-4 md:px-6 lg:px-8 flex items-center justify-between py-3 sm:py-4 gap-2 sm:gap-4">
         {/* Logo */}
-        <Link href="/home" className="flex items-center gap-3 group">
+        <Link href="/home" className="flex items-center gap-2 group shrink-0">
           <span
-            className="inline-flex items-center justify-center w-9 h-9 text-sm font-black rounded-md"
+            className="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 text-xs font-black rounded-md"
             style={{
               backgroundColor: 'var(--accent)',
               color: '#1A1A1A',
@@ -26,24 +26,24 @@ export default function Header() {
           </span>
           <div className="hidden sm:flex flex-col leading-tight">
             <span
-              className="text-lg font-extrabold tracking-tight"
+              className="text-sm sm:text-lg font-extrabold tracking-tight"
               style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}
             >
               Moneymint
             </span>
-            <span className="text-xs font-bold" style={{ color: 'var(--text-muted)' }}>
-              by Divyansh Nagar
+            <span className="text-[10px] font-bold" style={{ color: 'var(--text-muted)' }}>
+              Finance Dashboard
             </span>
           </div>
         </Link>
 
         {/* Right side */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 ml-auto">
           <ThemeToggle />
 
           {/* User avatar */}
           <div
-            className="flex items-center gap-2 px-3 py-1.5"
+            className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5"
             style={{
               border: 'var(--nb-border-width) solid var(--nb-border-color)',
               borderRadius: 'var(--nb-radius)',
@@ -51,7 +51,7 @@ export default function Header() {
             }}
           >
             <span
-              className="inline-flex items-center justify-center w-7 h-7 text-xs font-black rounded-md"
+              className="inline-flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 text-[10px] sm:text-xs font-black rounded-md"
               style={{
                 backgroundColor: 'var(--accent)',
                 color: '#1A1A1A',
@@ -61,10 +61,10 @@ export default function Header() {
               D
             </span>
             <span
-              className="hidden md:block text-sm font-bold"
+              className="hidden md:block text-xs sm:text-sm font-bold"
               style={{ color: 'var(--text-primary)' }}
             >
-              Divyansh Nagar
+              Divyansh
             </span>
           </div>
         </div>
