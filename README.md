@@ -1,186 +1,147 @@
-# Moneymint - Personal Finance Dashboard
+# Moneymint
 
-A **neobrutalist** personal finance dashboard built with Next.js 15, React 19, and Tailwind CSS v4. Track spending, manage transactions, and gain insights from your financial data.
+Moneymint is a frontend-first personal finance web app built with Next.js.
+It helps users track money movement, monitor portfolios, read market updates, and get AI-powered financial insights from one dashboard.
 
-## Design Philosophy
+This README is written for developers, reviewers, and recruiters who want to quickly understand:
+- what features exist,
+- where those features are in the code,
+- how to run the project.
 
-**Neobrutalism** - inspired by the Comet sneaker website aesthetic:
+## Live Product Direction
 
-- **Bold borders** (2.5px solid) with hard drop shadows (no blur, no glow)
-- **Flat, saturated colors** - yellow accents, green for income, red for expenses
-- **Strong typography** - Space Grotesk for headings, Inter for body text
-- **Raw, confident UI** - chunky buttons, thick badges, intentional visual weight
-- **No gradients, no glassmorphism, no AI-generic rounded aesthetics**
+The product experience focuses on:
+- Fast, responsive finance tracking
+- Clear data visualization
+- Practical AI insights
+- Simple navigation between finance modules
 
-## Features
+Even though backend integrations can be added later, the current app already demonstrates a complete frontend product flow.
 
-### Core Dashboard (Requirement 1)
+## Frontend Features
 
-- **Summary Cards**: Total Balance, Income, Expenses, Savings Rate with colored accent strips
-- **Balance Trend Chart**: SVG grouped bar chart showing monthly income vs expenses
-- **Spending Breakdown**: Horizontal bar chart with category percentages
+### 1. Dashboard Overview
+- Financial summary blocks for balance, income, expenses, and savings rate
+- Trend and breakdown visualizations
+- Compact, mobile-friendly dashboard layout
 
-### Transactions (Requirement 2)
+### 2. Transactions Management
+- List and review transaction history
+- Search, filter, sort, and paginate transactions
+- Add and edit entries from the same workspace flow
+- Mobile-optimized pagination and controls
 
-- Full transaction list with Date, Title, Category, Type, Amount
-- **Search**: Filter by title, category, or date
-- **Type Filter**: Segmented control (All / Income / Expense)
-- **Category Filter**: Dropdown with all available categories
-- **Sort**: Date (newest/oldest), Amount (high/low)
-- **Pagination**: 10 items per page with numbered page controls
+### 3. Portfolio Tracking
+- Demat/broker account snapshots
+- Invested vs current value comparisons
+- P&L-oriented presentation
 
-### Role-Based UI (Requirement 3)
+### 4. UPI and Bank Tracking
+- UPI app/account records
+- Bank account details and balance mapping
+- Transaction grouping across payment channels
 
-- **Viewer**: Read-only access, "VIEW ONLY" badge, locked admin panel
-- **Admin**: Full CRUD - add/edit transactions, form visible, edit buttons on rows
-- Toggle roles via segmented control in the hero section
+### 5. Rewards and Coupons
+- Rewards listing and coupon interaction flow
+- Improved text handling and mobile-safe layout
 
-### Insights (Requirement 4)
+### 6. Financial News and Insights
+- News feed page for market-related updates
+- Insights page for strategic recommendations
 
-- **Highest spending category** with amount
-- **Monthly comparison** with delta
-- **Average expense** per transaction
-- **Savings assessment** based on rate thresholds
-- **AI Analysis**: Sends anonymized financial summary to Claude API for personalized insights
+### 7. AI-Driven Experience (Product-facing)
+- AI-powered insights narrative in product messaging
+- AI insights module architecture ready in app APIs
+- "New AI" direction reflected in welcome and insights experiences
 
-### State Management (Requirement 5)
+### 8. Theme and Accessibility Improvements
+- Light and dark mode support
+- Theme toggle available in Profile
+- Readability-focused light mode refinements
+- Responsive typography and spacing updates
 
-- **React Context + useReducer** pattern in `lib/dashboard-store.tsx`
-- Centralized state: transactions, role, filters
-- Computed values: totals, monthly data, spending breakdown, filtered transactions
-- **LocalStorage persistence** - state survives page refreshes
+## Feature Map: Where To Find What
 
-### UI/UX (Requirement 6)
+### App Routes
+- Welcome page: app/welcome/page.tsx
+- Home dashboard: app/(root)/home/page.tsx
+- Transactions: app/(root)/transactions/page.tsx
+- Portfolio: app/(root)/portfolio/page.tsx
+- UPI: app/(root)/upi/page.tsx
+- News: app/(root)/news/page.tsx
+- Insights: app/(root)/insights/page.tsx
+- Rewards: app/(root)/rewards/page.tsx
+- Profile: app/(root)/profile/page.tsx
 
-- **Responsive**: Desktop table, mobile card layout
-- **Dark/Light mode**: Neobrutalist theme toggle with hard swap
-- **Empty states**: Graceful handling when no data matches filters
-- **Accessible**: Semantic HTML, proper labels, keyboard navigation
+### Core Dashboard Components
+- Main dashboard orchestrator: components/dashboard/FinanceDashboard.tsx
+- Summary metrics: components/dashboard/SummaryCards.tsx
+- Balance trend chart: components/dashboard/BalanceTrend.tsx
+- Spending chart: components/dashboard/SpendingBreakdown.tsx
+- Transactions table: components/dashboard/TransactionTable.tsx
+- Transaction form: components/dashboard/TransactionForm.tsx
+- File import flow: components/dashboard/ExcelUpload.tsx
+- Export actions: components/dashboard/ExportButton.tsx
 
-## Optional Enhancements Implemented
+### Shared UI and App Shell
+- Sidebar navigation: components/Sidebar.tsx
+- Header: components/Header.tsx
+- Theme button: components/ThemeToggle.tsx
+- Global design tokens and styles: app/globals.css
 
-- **Dark Mode**: Full light/dark theme with neobrutalist design tokens
-- **Data Persistence**: LocalStorage for transactions and role
-- **AI Integration**: Claude API for financial insights
-- **News Feed**: Real-time financial news from NewsData.io
-- **Export**: Download transactions as CSV or JSON
-- **Advanced Filtering**: Multi-criteria filtering with search, type, category, sort
+### Data and Utilities
+- Central state store: lib/dashboard-store.tsx
+- Export helpers: lib/export.ts
+- Shared utilities: lib/utils.ts
+
+### API Endpoints (App-layer)
+- AI/insights endpoint: app/api/insights
+- News endpoint: app/api/news
+- Inngest endpoint: app/api/inngest
 
 ## Tech Stack
 
-| Layer          | Technology                           |
-| -------------- | ------------------------------------ |
-| Framework      | Next.js 15.5 (App Router, Turbopack) |
-| UI             | React 19                             |
-| Styling        | Tailwind CSS v4 + Custom CSS         |
-| Language       | TypeScript 5                         |
-| State          | React Context + useReducer           |
-| Theme          | next-themes                          |
-| Fonts          | Space Grotesk + Inter (Google Fonts) |
-| AI             | Anthropic Claude API                 |
-| News           | NewsData.io API                      |
-| Icons          | Inline SVG (no emoji, no icon libs)  |
+- Next.js 15 (App Router, Turbopack)
+- React 19
+- TypeScript
+- Tailwind CSS v4 + custom global styling
+- next-themes for theme switching
+- Radix UI primitives in shared UI components
 
-## Project Structure
-
-```
-app/
-├── layout.tsx              # Root layout (fonts, theme provider)
-├── globals.css             # Neobrutalism design system
-├── (root)/
-│   ├── layout.tsx          # App shell (header + container)
-│   └── page.tsx            # Dashboard page
-├── api/
-│   ├── insights/route.ts   # AI insights endpoint
-│   └── news/route.ts       # News feed endpoint
-components/
-├── Header.tsx              # Neobrutalist header
-├── ThemeToggle.tsx          # Dark/light toggle
-├── dashboard/
-│   ├── FinanceDashboard.tsx # Main orchestrator
-│   ├── SummaryCards.tsx     # Balance, income, expenses, savings
-│   ├── BalanceTrend.tsx     # Monthly bar chart
-│   ├── SpendingBreakdown.tsx # Category breakdown
-│   ├── TransactionTable.tsx # Full table with filters
-│   ├── TransactionForm.tsx  # Admin add/edit form
-│   ├── RoleSwitcher.tsx     # Viewer/Admin toggle
-│   ├── InsightsPanel.tsx    # Static + AI insights
-│   ├── NewsFeed.tsx         # Financial news
-│   └── ExportButton.tsx     # CSV/JSON export
-lib/
-├── dashboard-store.tsx      # Context + Reducer + seed data
-├── export.ts                # CSV/JSON export utilities
-└── utils.ts                 # Shared utilities
-```
-
-## Setup Instructions
+## Getting Started
 
 ### Prerequisites
-
 - Node.js 18+
-- npm or yarn
+- npm
 
-### Installation
+### Install and Run
 
 ```bash
-# Clone the repository
-git clone <repo-url>
-cd StockZorywnAssignment
-
-# Install dependencies
+git clone https://github.com/inddivyansh/Moneymint.git
+cd Moneymint
 npm install
-
-# Start development server
 npm run dev
 ```
 
-The app runs at `http://localhost:3000` by default.
+Open http://localhost:3000.
 
-### Environment Variables (Optional)
+### Production Build
 
-Create a `.env.local` file for optional API features:
-
-```env
-# AI Insights (Anthropic Claude)
-ANTHROPIC_KEY=your-key-here
-
-# Financial News (NewsData.io)
-NEWSDATA_KEY=your-key-here
+```bash
+npm run build
+npm run start
 ```
 
-The dashboard works fully without these keys - AI insights and news will show appropriate fallback messages.
+## Project Notes
 
-**No MongoDB or database required.** The app uses mock data and localStorage for persistence.
+- This repository is currently frontend-first.
+- The product intentionally demonstrates complete UI/UX flows even when backend services are optional.
+- State and user experience are designed to be testable and demo-friendly.
 
-## State Management Approach
+## Author
 
-The application uses a single **React Context + useReducer** pattern:
+Made by Divyanhs Nagar.
 
-```
-DashboardProvider
-├── state.role          → 'viewer' | 'admin'
-├── state.transactions  → Transaction[]
-├── state.filters       → { search, type, category, sortBy }
-├── computed.totals     → { income, expense, balance, savingsRate }
-├── computed.monthlyData → monthly income/expense/balance
-├── computed.spendingByCategory → category totals + percentages
-└── computed.filteredTransactions → filtered + sorted results
-```
+GitHub:
+https://github.com/inddivyansh/Moneymint
 
-Actions are dispatched via `dispatch()` and state changes cascade through memoized computed values. Filters are not persisted (reset on page load for fresh UX), while transactions and role are persisted to localStorage.
-
-## Design Decisions
-
-1. **Neobrutalism over minimalism**: Thick borders and hard shadows create visual hierarchy without relying on gradients or transparency effects.
-
-2. **SVG charts over chart libraries**: Keeps the bundle small and gives full control over the neobrutalist styling (thick strokes, bordered elements).
-
-3. **Segmented controls over dropdowns** for type filter: More touch-friendly and visually clear for 3-option choices.
-
-4. **Event-driven edit flow**: Transaction table dispatches a custom DOM event (`edit-transaction`) that the form listens to, avoiding prop drilling.
-
-5. **No authentication required**: The app demonstrates RBAC through frontend role switching without backend complexity, making it instantly runnable for evaluators.
-
-## License
-
-MIT
