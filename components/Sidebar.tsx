@@ -37,7 +37,7 @@ export default function Sidebar() {
         <div className="p-4 pb-3" style={{ borderBottom: '1px solid var(--surface-3)' }}>
           <Link href="/home" className="flex items-center gap-2">
             <Image src="/assets/icons/moneymintlogo.png" alt="Moneymint logo" width={32} height={32} className="shrink-0" />
-            <span className="text-sm font-extrabold tracking-tight hidden lg:inline" style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}>
+            <span className="text-base font-extrabold tracking-tight hidden lg:inline" style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}>
               Moneymint
             </span>
           </Link>
@@ -51,7 +51,7 @@ export default function Sidebar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="flex items-center px-2.5 py-2 rounded-lg text-xs font-semibold transition-colors"
+                className="flex items-center px-2.5 py-2 rounded-lg text-sm font-semibold transition-colors"
                 style={{
                   backgroundColor: active ? 'var(--accent)' : 'transparent',
                   color: active ? '#1A1A1A' : 'var(--text-secondary)',
@@ -96,7 +96,7 @@ export default function Sidebar() {
               }}
               title={item.label}
             >
-              <span className="text-[10px] sm:text-xs font-bold leading-tight">{item.label}</span>
+              <span className="text-xs sm:text-sm font-bold leading-tight">{item.label}</span>
             </Link>
           );
         })}

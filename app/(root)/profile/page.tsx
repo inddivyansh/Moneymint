@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useDashboard, currency, type BankAccount, type DematAccount } from '@/lib/dashboard-store';
+import ThemeToggle from '@/components/ThemeToggle';
 
 export default function ProfilePage() {
   const { state, dispatch } = useDashboard();
@@ -61,9 +62,12 @@ export default function ProfilePage() {
 
   return (
     <div className="space-y-6 sm:space-y-8 nb-animate-in">
-      <div>
-        <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: 'var(--text-muted)' }}>Account</p>
-        <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight" style={{ fontFamily: 'var(--font-display)' }}>Profile</h1>
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: 'var(--text-muted)' }}>Account</p>
+          <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight" style={{ fontFamily: 'var(--font-display)' }}>Profile</h1>
+        </div>
+        <ThemeToggle />
       </div>
 
       {/* User Details */}
